@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq.Expressions;
-
+﻿using static Kukulator2.getUserInput;
 namespace Kukulator2
 {
-
     internal class Program
     {
-        static void Main()
+        public static void Main()
         {
             Console.Clear();
             Console.WriteLine("Select an operation to perform");
@@ -14,64 +11,41 @@ namespace Kukulator2
             Console.WriteLine("2. SUBTRACT");
             Console.WriteLine("3. MULTIPLY");
             Console.WriteLine("4. DIVIDE");
-            Console.WriteLine("5. BRACKETS");
+            Console.WriteLine("5. EXIT");
 
             var operation = Convert.ToString(Console.ReadLine());
-            int num1 = 0;
-            int num2 = 0;
-            void getInputs()
-            {
-                Console.WriteLine("Enter first number:");
-                string? input1 = Console.ReadLine();
-                if (!string.IsNullOrEmpty(input1)) //handles null exception
-                {
-                    operation = ""; 
-                } 
-                else
-                {
-                    num1 = Convert.ToInt32(input1);
-                }
 
-                Console.WriteLine("Enter second number:");
-                string? input2 = Console.ReadLine();
-                if (!string.IsNullOrEmpty(input2)) //handles null exception
-                { 
-                    operation = "";
-                }
-                else
-                {
-                    num2 = Convert.ToInt32(input2);
-                }
-                
-            }
-
+            int num1;
+            int num2;
             switch (operation)
             {
                 case "1": //Add
-                    getInputs();
+                    num1 = getInput();
+                    num2 = getInput();
                     Console.WriteLine("The Sum is:");
-                    Console.WriteLine("{0}", num1 + num2 );
+                    Console.WriteLine("{0}", num1 + num2);
                     break;
                 case "2": //Subtract
-                    getInputs();
+                    num1 = getInput();
+                    num2 = getInput();
                     Console.WriteLine("The Difference is:");
-                    Console.WriteLine("{0}", num1 - num2 );
+                    Console.WriteLine("{0}", num1 - num2);
                     break;
                 case "3": //Multiply
-                    getInputs();
+                    num1 = getInput();
+                    num2 = getInput();
                     Console.WriteLine("The Product is:");
-                    Console.WriteLine("{0}", num1 * num2 );
+                    Console.WriteLine("{0}", num1 * num2);
                     break;
                 case "4": //Divide
-                    getInputs();
+                    num1 = getInput();
+                    num2 = getInput();
                     Console.WriteLine("The Result is:");
-                    Console.WriteLine("{0}", num1 / num2 );
+                    Console.WriteLine("{0}", num1 / num2);
                     break;
-                case "5": //Brackets
-                    Console.WriteLine("Enter expression:");
-                    var expression = Console.ReadLine();
-                    Console.WriteLine("The Result is:");
-                    Console.WriteLine("{0}", Convert.ToInt32(expression));
+                case "5":
+                case "exit": //Exit
+                    Environment.Exit(0);
                     break;
                 default: //Default
                     Console.WriteLine("Invalid entry");
